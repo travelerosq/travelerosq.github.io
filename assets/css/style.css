@@ -1,7 +1,7 @@
 /* * {border: 1px solid red;}*/
 @font-face {
     font-family: 'Eddilu';
-    src: url('/assets/font/Eddilu.ttf') format('truetype');
+    src: url('../font/Eddilu.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -85,4 +85,5 @@ body {
         font-size: 23px;
     }
 }
+
 
