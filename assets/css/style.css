@@ -1,64 +1,88 @@
+/* * {border: 1px solid red;}*/
+@font-face {
+    font-family: 'Eddilu';
+    src: url('/assets/font/Eddilu.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: #ffc6c6;
+    font-family: 'Eddilu';
 }
 
-.nav {
-    padding: 2rem;
-}
-
-.brand-vertical {
+.navbar {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 0.25rem;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.logo-socials {
+    display: flex;
+    align-items: flex-end;
+    gap: .25rem;
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .socials-vertical {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1vw;
+    flex-shrink: 1;
+    max-height: 100%;
+}
+
+.logo {
+    display: flex;
+    min-width: 0;
 }
 
 .logo img {
-    height: 250px;
-    width: auto;
-    display: block;
-    fill: #ffffff;
+    height: auto;
+    width: clamp(200px, 60vw, 1000px);
+    max-width: 100%;
 }
 
 .sidelink img {
-    height: 40px;
-    width: auto;
+    height: auto;
+    width: clamp(25px, 4vw, 60px);
     display: block;
-    fill: "#ffffff";
-    opacity: 0.8;
-    transition: opacity .2s ease;
 }
 
-.nav-links a {
-    color: #ffffff;
+.nav-links {
     display: flex;
+    white-space: nowrap;
+    gap: 1rem;
+    padding-right: 2rem;
+}
+
+.nav-link {
+    font-size: clamp(15px, 3vw, 40px);
+    color: #fff;
     text-decoration: none;
-    flex-direction: row;
-
+    position: relative;
 }
 
-.nav-lin.active {
-    text-decoration: underline;
-}
-
-.nav-link::after {
+.nav-link.active::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
+    bottom: -0.15em;
+    width: 100%;
+    height: 0.08em;
     background-color: currentColor;
-    transition: width 0.25s ease;
 }
 
-/* show underline on hover or active */
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
+@media (max-width: 768px) {
+    .nav-links a {
+        font-size: 23px;
+    }
 }
+
