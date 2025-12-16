@@ -98,13 +98,14 @@ body {
     Gallery 
 */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(clamp(160px, 22vw, 320px), 1fr));
-    gap: 0.5rem;
-    align-items: start;
+    column-width: clamp(160px, 22vw, 320px);
+    column-gap: 0.5rem;
+    padding: 0.5rem;
 }
 
 .art-piece {
+    break-inside: avoid;
+    margin-bottom: 0.5rem;
     position: relative;
     width: 100%;
 }
