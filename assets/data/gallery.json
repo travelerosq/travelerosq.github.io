@@ -61,7 +61,7 @@
     },
     {
         "file": "drawing13.png",
-        "type": "wide"
+        "type": "square"
     },
     {
         "file": "drawing14.png",
@@ -85,10 +85,6 @@
     },
     {
         "file": "drawing19.png",
-        "type": "wide"
-    },
-    {
-        "file": "drawing20.png",
         "type": "wide"
     },
     {
@@ -128,6 +124,30 @@
         "type": "wide"
     },
     {
+        "file": "drawing30.png",
+        "type": "wide"
+    },
+    {
+        "file": "drawing31.png",
+        "type": "wide"
+    },
+    {
+        "file": "drawing32.png",
+        "type": "square"
+    },
+    {
+        "file": "drawing33.png",
+        "type": "square"
+    },
+    {
+        "file": "drawing34.png",
+        "type": "wide"
+    },
+    {
+        "file": "drawing35.png",
+        "type": "wide"
+    },
+    {
         "file": "insta1.png",
         "type": "tall"
     },
@@ -139,4 +159,5 @@
         "file": "insta3.png",
         "type": "tall"
     }
+
 ]

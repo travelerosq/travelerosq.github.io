@@ -11,9 +11,21 @@
 /*
     Global Style
 */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     background-color: #ffc6c6;
     font-family: 'Eddilu';
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 /* 
@@ -109,7 +121,7 @@ footer {
     Gallery 
 */
 .gallery {
-    column-width: clamp(160px, 20vw, 320px);
+    column-width: clamp(160px, 20vw, 400px);
     column-gap: 0.4rem;
     padding: 0.4rem;
 }
@@ -123,7 +135,7 @@ footer {
 
 .art-inner {
     position: absolute;
-    inset: 12%;
+    inset: 11%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,6 +204,10 @@ footer {
 @media (max-width: 768px) {
     .gallery {
         column-width: clamp(114px, 10vw, 320px);
+    }
+
+    .art-inner {
+        inset: 8%;
     }
 
     .nav-links a {
