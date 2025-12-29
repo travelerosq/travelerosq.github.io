@@ -23,9 +23,35 @@ if (imgFile) {
     }
 }
 
-
 let historyStep = 0;
 let isDrawing = false;
+let currentColor = "#000000";
+let currentLineWidth = 5;
+let currentOpacity = 1;
+let lastX = 0;
+let lastY = 0;
+let strokePoints = [];
+
+const colorPicker = document.getElementById("colorPicker");
+const penSize = document.getElementById("penSize");
+const penSizeValue = document.getElementById("penSizeValue");
+const opacity = document.getElementById("opacity");
+const opacityValue = document.getElementById("opacityValue");
+
+opacity.addEventListener("input", (e) => {
+    currentOpacity = e.target.value / 100;
+    opacityValue.textContent = `${e.target.value}%`;
+});
+
+colorPicker.addEventListener("input", (e) => {
+    currentColor = e.target.value;
+});
+
+penSize.addEventListener("input", (e) => {
+    currentLineWidth = e.target.value;
+    penSizeValue.textContent = e.target.value;
+});
+
 
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mousemove', draw);
@@ -61,9 +87,14 @@ document.getElementById("download").addEventListener("click", () => {
 function startDrawing(e) {
     isDrawing = true;
     const pos = getPointerPos(e);
+    strokePoints = [pos];
 
-    ctx.beginPath();
-    ctx.moveTo(pos.x, pos.y);
+    ctx.save();
+    ctx.strokeStyle = currentColor;
+    ctx.lineWidth = currentLineWidth;
+    ctx.globalAlpha = currentOpacity;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
 
     e.preventDefault();
 }
@@ -71,7 +102,17 @@ function startDrawing(e) {
 function stopDrawing() {
     if (!isDrawing) return;
     isDrawing = false;
-    ctx.closePath();
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(history[historyStep], 0, 0);
+
+    ctx.beginPath();
+    ctx.moveTo(strokePoints[0].x, strokePoints[0].y);
+    for (let i = 1; i < strokePoints.length; i++) {
+        ctx.lineTo(strokePoints[i].x, strokePoints[i].y);
+    }
+    ctx.stroke();
+    ctx.restore();
 
     history.splice(historyStep + 1);
     history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
@@ -80,11 +121,17 @@ function stopDrawing() {
 
 function draw(e) {
     if (!isDrawing) return;
-
     const pos = getPointerPos(e);
+    strokePoints.push(pos);
 
-    ctx.lineCap = 'round';
-    ctx.lineTo(pos.x, pos.y);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(history[historyStep], 0, 0);
+
+    ctx.beginPath();
+    ctx.moveTo(strokePoints[0].x, strokePoints[0].y);
+    for (let i = 1; i < strokePoints.length; i++) {
+        ctx.lineTo(strokePoints[i].x, strokePoints[i].y);
+    }
     ctx.stroke();
 
     e.preventDefault();

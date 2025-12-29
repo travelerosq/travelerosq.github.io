@@ -16,12 +16,33 @@
         <script src="assets/js/fetchNavbar.js" defer></script>
     </header>
     <main>
-        <div class="drawing">
-            <div class="frame" id="frame">
-                <img src="assets/images/drawing-border.svg" class="canvas-border" alt="">
-                <canvas id="color"></canvas>
+        <div class="drawing-container">
+            <div class="drawing">
+                <div class="frame" id="frame">
+                    <img src="assets/images/drawing-border.svg" class="canvas-border" alt="">
+                    <canvas id="color"></canvas>
+                </div>
+            </div>
+            <div id="tools">
+                <label>
+                    Color: 
+                    <input type="color" id="colorPicker" value="#000000">
+                </label>
+            
+                <label>
+                    Pen size:
+                    <input type="range" id="penSize" min="1" max="50" value="5">
+                    <span id="penSizeValue">5</span>
+                </label>
+
+                <label>
+                    Opacity: 
+                    <input type="range" id="opacity" min="1" max="100" value="100">
+                    <span id="opacityValue">100%</span>
+                </label>
             </div>
         </div>
+        
         <button id="download">Download</button>
         <script src="assets/js/draw.js" defer></script>
     </main>
